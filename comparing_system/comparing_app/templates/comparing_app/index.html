@@ -1,0 +1,35 @@
+{% extends 'comparing_app/wrapper.html' %}
+{% block content %}
+<div class="container">
+    {% if user.is_authenticated %}
+
+    <div class="row">
+        <div class="col-md-5 d-flex flex-column justify-content-around align-items-center alert alert-info p-4" style="min-height: 400px">
+            <img src="{{first.photo.url}}" alt="Фото девушки" width="300px" class="img-thumbnail">
+            <a href="/{{first.id}}" class="h2" style="color: grey">{{first.name}}</a>
+            <form action="" method="post" class="d-flex flex-column justify-content-center">
+                {% csrf_token %}
+                <input type="text" value="{{first.id}}" name="win" style="display: none">
+                <input type="text" value="{{second.id}}" name="lose" style="display: none">
+                <input type="submit" value="Проголосовать за {{first.name}}" class="btn btn-outline-secondary">
+            </form>
+        </div>
+        <div class="col-md-5 offset-md-2 d-flex flex-column justify-content-around align-items-center lert alert-info p-4 "style="min-height: 400px">
+            <img src="{{second.photo.url}}" alt="Фото девушки" width="300px" class="img-thumbnail">
+            <a href="/{{second.id}}" class="h2" style="color: grey">{{second.name}}</a>
+            <form action="" method="post" class="d-flex flex-column justify-content-center">
+                {% csrf_token %}
+                <input type="text" value="{{second.id}}" name="win" style="display: none">
+                <input type="text" value="{{first.id}}" name="lose" style="display: none">
+                <input type="submit" value="Проголосовать за {{second.name}}" class="btn btn-outline-secondary">
+            </form>
+        </div>
+    </div>
+    {% else %}
+        <h1 class="alert alert-danger">Вы не зарегестрированы!</h1>
+        <a href="/user_register/register" class="btn btn-outline-secondary">Зарегестрироваться</a>
+    {% endif %}
+</div>
+
+
+{% endblock %}

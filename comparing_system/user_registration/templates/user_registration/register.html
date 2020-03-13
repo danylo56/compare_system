@@ -1,0 +1,17 @@
+{% extends 'comparing_app/wrapper.html' %}
+
+{% block content %}
+<div class="container">
+    <form action="" method="post">
+        {% csrf_token %}
+<!--        <label for="username">Имя пользователя</label>-->
+<!--        <input type="text" id="username" name="username" class="form-control">-->
+<!--        <label for="password1">Пароль</label>-->
+<!--        <input type="password" id="password1" name="password1" class="form-control">-->
+<!--        <label for="password2">Порторите пароль</label>-->
+<!--        <input type="password" id="password2" name="password2" class="form-control">-->
+        {{form.as_p}}
+        <input type="submit" value="Зарегестрироваться" class="btn btn-outline-primary">
+    </form>
+</div>
+{% endblock %}

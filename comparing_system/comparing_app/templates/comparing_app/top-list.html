@@ -1,0 +1,12 @@
+{% extends 'comparing_app/wrapper.html' %}
+{% block content %}
+<div class="container">
+    {% for girl in object_list %}
+    <div class="alert alert-primary d-flex justify-content-around align-items-center col-md-8 offset-md-2">
+        <a href="{{girl.id}}" class="h3">{{girl.name}}</a>
+        <img src="{{girl.photo.url}}" alt="Фото девушки" class="img-thumbnail" width="200px" height="200px">
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
